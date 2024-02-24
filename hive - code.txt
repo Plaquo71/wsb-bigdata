@@ -1,0 +1,13 @@
+// HIVE code, Weronika Burzyńska 81812, WSB Merito Wrocław // 
+
+
+SELECT movieId, AVG(rating) AS avg_rating
+FROM ratings_burza
+GROUP BY movieId;
+
+SELECT m.movieId, m.title, AVG(r.rating) AS avg_rating
+FROM movies_Burza m
+JOIN ratings_burza r ON m.movieId = r.movieId
+GROUP BY m.movieId, m.title;
+
+

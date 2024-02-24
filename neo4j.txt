@@ -1,0 +1,51 @@
+// Neo4j code, Weronika Burzyńska 81812, WSB Merito Wrocław // 
+
+
+// Tworzenie węzłów dla spółki P4
+CREATE (p4:Company {name: 'P4'})
+
+CREATE (phobos:Company {name: 'Grupa Phobos'})
+CREATE (redgeTech:Company {name: 'Redge Technologies'})
+CREATE (dataCenter:Company {name: '3S Data Center'})
+
+// Tworzenie węzłów dla członków zarządu
+CREATE (beataZborowska:BoardMember {name: 'Beata Zborowska', position: 'Członek Zarządu', since: '2021-05-05'})
+CREATE (mikkelNoesgaard:BoardMember {name: 'Mikkel Noesgaard', position: 'Członek Zarządu', since: '2019-12-09'})
+CREATE (michalZiolkowski:BoardMember {name: 'Michał Ziółkowski', position: 'Członek Zarządu', since: '2018-11-27'})
+CREATE (jeanHarion:BoardMember {name: 'Jean Harion', position: 'Prezes Zarządu', since: '2018-08-31'})
+CREATE (tomaszKlim:BoardMember {name: 'Tomasz Robert Klim', position: 'Prezes Zarządu', since: '2016-01-15'})
+CREATE (dawidKlim:BoardMember {name: 'Dawid Klim', position: 'Członek Zarządu', since: '2023-06-26'})
+CREATE (marekChrusciel:BoardMember {name: 'Marek Janusz Chruściel', position: 'Członek Zarządu', since: '2023-09-13'})
+CREATE (przemyslawFrasunek:BoardMember {name: 'Przemysław Frasunek', position: 'Członek Zarządu', since: '2020-02-19'})
+CREATE (tomaszKaminski:BoardMember {name: 'Tomasz Mikołaj Kamiński', position: 'Członek Zarządu', since: '2022-12-14'})
+CREATE (monikaGruszczyk:BoardMember {name: 'Monika Joanna Roś Gruszczyk', position: 'Prezes Zarządu', since: '2017-04-18'})
+CREATE (tomaszDoligalski:BoardMember {name: 'Tomasz Stefan Doligalski', position: 'Członek Zarządu', since: '2018-05-11'})
+CREATE (renataKrakowska:BoardMember {name: 'Renata Krakowska', position: 'Członek Zarządu', since: '2023-06-23'})
+
+// Utworzenie relacji między spółkami a P4
+CREATE (phobos)-[:IS_SUBSIDIARY_OF {since: '2023-09-13'}]->(p4)
+CREATE (redgeTech)-[:HAS_SHARES_IN {since: '2022-08-17'}]->(p4)
+CREATE (dataCenter)-[:HAS_SHARES_IN {since: '2023-02-08'}]->(p4)
+
+// Utworzenie relacji między członkami zarządu a P4
+CREATE (beataZborowska)-[:BOARD_MEMBER_OF {since: '2021-05-05'}]->(p4)
+CREATE (mikkelNoesgaard)-[:BOARD_MEMBER_OF {since: '2019-12-09'}]->(p4)
+CREATE (michalZiolkowski)-[:BOARD_MEMBER_OF {since: '2018-11-27'}]->(p4)
+CREATE (jeanHarion)-[:CEO_OF {since: '2018-08-31'}]->(p4)
+CREATE (tomaszKlim)-[:BOARD_MEMBER_OF {since: '2016-01-15'}]->(p4)
+CREATE (dawidKlim)-[:BOARD_MEMBER_OF {since: '2023-06-26'}]->(p4)
+CREATE (marekChrusciel)-[:BOARD_MEMBER_OF {since: '2023-09-13'}]->(p4)
+
+// Utworzenie relacji między członkami zarządu a Grupa Phobos
+CREATE (tomaszKlim)-[:CEO_OF {since: '2016-01-15'}]->(phobos)
+CREATE (dawidKlim)-[:BOARD_MEMBER_OF {since: '2023-06-26'}]->(phobos)
+CREATE (marekChrusciel)-[:BOARD_MEMBER_OF {since: '2023-09-13'}]->(phobos)
+
+// Utworzenie relacji między członkami zarządu a Redge Technologies
+CREATE (przemyslawFrasunek)-[:BOARD_MEMBER_OF {since: '2020-02-19'}]->(redgeTech)
+CREATE (tomaszKaminski)-[:BOARD_MEMBER_OF {since: '2022-12-14'}]->(redgeTech)
+
+// Utworzenie relacji między członkami zarządu a 3S Data Center
+CREATE (monikaGruszczyk)-[:CEO_OF {since: '2017-04-18'}]->(dataCenter)
+CREATE (tomaszDoligalski)-[:BOARD_MEMBER_OF {since: '2018-05-11'}]->(dataCenter)
+CREATE (renataKrakowska)-[:BOARD_MEMBER_OF {since: '2023-06-23'}]->(dataCenter)
